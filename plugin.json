@@ -1,15 +1,8 @@
 {
-    "name": "Hello World",
+    "name": "AI Costs",
     "url": "https://github.com/PostHog/posthog-hello-world-plugin",
-    "description": "Greet the world with every PostHog event. An example plugin.",
-    "main": "index.js",
+    "description": "Calculate costs for AI generations events based on the number of tokens.",
+    "main": "index.ts",
     "config": [
-        {
-            "key": "greeting",
-            "name": "What greeting would you like to use?",
-            "type": "string",
-            "default": "Hello world!",
-            "required": false
-        }
     ]
 }
