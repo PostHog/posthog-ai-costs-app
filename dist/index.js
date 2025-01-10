@@ -1,7 +1,9 @@
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
@@ -15,6 +17,14 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
@@ -5136,6 +5146,7 @@ var parentModelNames = providers.reduce((acc, provider) => {
 }, {});
 
 // src/index.ts
+var import_js_big_decimal = __toESM(require("js-big-decimal"));
 async function processEvent(event) {
   if (event.event !== "$ai_generation" || !event.properties) {
     return event;
@@ -5155,13 +5166,13 @@ async function processEvent(event) {
     return event;
   }
   if (event.properties["$ai_input_tokens"]) {
-    event.properties["$ai_input_cost_usd"] = Math.round(Number(cost.cost.prompt_token) * event.properties["$ai_input_tokens"] * 1e20) / 1e20;
+    event.properties["$ai_input_cost_usd"] = parseFloat(import_js_big_decimal.default.multiply(cost.cost.prompt_token, event.properties["$ai_input_tokens"]));
   }
   if (event.properties["$ai_output_tokens"]) {
-    event.properties["$ai_output_cost_usd"] = Math.round(Number(cost.cost.completion_token) * event.properties["$ai_output_tokens"] * 1e20) / 1e20;
+    event.properties["$ai_output_cost_usd"] = parseFloat(import_js_big_decimal.default.multiply(cost.cost.completion_token, event.properties["$ai_output_tokens"]));
   }
   if (event.properties["$ai_input_cost_usd"] && event.properties["$ai_output_cost_usd"]) {
-    event.properties["$ai_total_cost_usd"] = Math.round((event.properties["$ai_input_cost_usd"] + event.properties["$ai_output_cost_usd"]) * 1e20) / 1e20;
+    event.properties["$ai_total_cost_usd"] = parseFloat(import_js_big_decimal.default.add(event.properties["$ai_input_cost_usd"], event.properties["$ai_output_cost_usd"]));
   }
   return event;
 }

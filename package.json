@@ -5,6 +5,7 @@
     "description": "Calculate costs for AI generations events based on the number of tokens.",
     "license": "Apache-2.0",
     "dependencies": {
+        "js-big-decimal": "^2.2.0",
         "tsup": "^8.3.5"
     },
     "scripts": {
