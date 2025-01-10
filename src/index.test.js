@@ -17,7 +17,7 @@ test("processEvent adds properties", async () => {
         $ai_provider: "openai",
         $ai_model: "gpt-4-turbo-2024-04-09",
         $ai_input_tokens: 100,
-        $ai_output_tokens: 200,
+        $ai_output_tokens: 200
     }
     });
 
