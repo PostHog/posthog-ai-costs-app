@@ -4,7 +4,9 @@
     "version": "0.0.1",
     "description": "Calculate costs for AI generations events based on the number of tokens.",
     "license": "Apache-2.0",
-    "dependencies": {},
+    "dependencies": {
+        "tsup": "^8.3.5"
+    },
     "scripts": {
         "test": "jest .",
         "lint": "eslint .",
@@ -12,7 +14,8 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "prepublishOnly": "yarn test",
-        "typecheck": "tsc"
+        "typecheck": "tsc",
+        "build": "tsup src/index.ts"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.16.11",
