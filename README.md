@@ -29,8 +29,8 @@ npm test
 ## How to install
 
 1. Open PostHog.
-1. Open the Plugins page from the sidebar.
-1. Head to the Advanced tab.
+1. Open the "Data pipelines" page from the sidebar.
+1. Head to the "Apps management" tab.
 1. "Install from GitHub, GitLab or npm" using this repository's URL.
 
 ## Questions?
